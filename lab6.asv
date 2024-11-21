@@ -65,23 +65,21 @@ grid on;
 
 %% 5 składników
 
-sklad5 = [sklad(:,1), sklad(:,2), sklad(:,19), sklad(:,25), sklad(:,26)];
+figure
+h5 = heatmap(skladniki,przepisy.Nazwa, sklad);
+
+d = pdist(sklad);
+
+Z = linkage(d,'ward');
 
 figure
-h5 = heatmap(wybrane,przepisy.Nazwa, sklad5);
+dendrogram(Z);
 
-d5 = pdist(sklad5);
+k = 4; 
+[idx, C] = kmeans(sklad,k);
+[coeff, score, ~] = pca(sklad);
 
-Z5 = linkage(d5,'ward');
-
-figure
-dendrogram(Z5);
-
-
-[idx5, C5] = kmeans(sklad5,k);
-[coeff5, score5, ~] = pca(sklad5);
-
-scatter(score5(:,1),score5(:,2),50,idx5,'filled');
+scatter(score(:,1),score(:,2),50,idx,'filled');
 xlabel('PCA 1');
 ylabel('PCA 2');
 title('Klasteryzacja k-means na PCA');
