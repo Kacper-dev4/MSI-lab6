@@ -1,7 +1,10 @@
 clear all
 clc
+close all
 
-przepisy = readtable('przepisy.csv', 'VariableNamingRule', 'preserve');
+%przepisy = readtable('przepisy.csv', 'VariableNamingRule', 'preserve');
+przepisy = load('przepZkropka.mat');
+przepisy = przepisy.przepisy1;
 skladniki = {'Maka', 'Mieso', 'bialko', 'zoltko', 'olej','sól','woda','cebula','czosnek','przyprawy/zioła','ser biały','ciastka/bułka tarta','masło','śmietana','cukier/miód','mleko','galaretka/budyń','orzechy/nasiona','owoce','proszek do pieczenia/soda','kakao','jogurt','cytryna','skrobia','warzywa','ser','czekolada','drożdże','kawa','makaron/ryż/kasza'};
 wybrane = {'Maka','woda','warzywa','ser','owoce'};
 
